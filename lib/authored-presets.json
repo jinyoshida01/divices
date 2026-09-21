@@ -1,0 +1,1694 @@
+[
+  {
+    "name": "01 \u00b7 Front",
+    "sourceId": "e8e9192a-807f-4c1d-a88a-03ac8cbd8c83",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        0,
+        5.532214234985218e-16,
+        9.03479148246982
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 63.91489055299539,
+          "y": 21.558179723502306,
+          "size": 80,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "de4cfda9-9bb7-4ea6-9535-bd4a46d85422",
+          "shape": "circle",
+          "color": "white",
+          "x": 97.91726670506912,
+          "y": 79.69110023041475,
+          "size": 66,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c57ea43f-2acb-4bb5-9c53-fb451fa2a810",
+          "shape": "circle",
+          "color": "white",
+          "x": 42.176699308755765,
+          "y": 91.77347350230414,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c4a3da4e-f81c-46c6-ab3c-1083e495fefb",
+          "shape": "circle",
+          "color": "white",
+          "x": 20.798531105990786,
+          "y": 29.410282258064516,
+          "size": 45,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -5.623984758848893,
+            0,
+            -2.0906447408001605
+          ],
+          "power": 2.4,
+          "width": 0.95,
+          "height": 6
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            5.623984758848893,
+            0,
+            -2.0906447408001605
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            0.5,
+            0.5,
+            -3.5
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "02 \u00b7 Three-quarter right",
+    "sourceId": "7ebe59b1-6f11-43ad-862f-e37cf15566a7",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        6.363961030678928,
+        5.51091059616309e-16,
+        6.3639610306789285
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 33.66395449308756,
+          "y": 67.82474078341014,
+          "size": 40,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "befc8afc-89aa-479d-9d7c-4426bbb6cd3a",
+          "shape": "circle",
+          "color": "white",
+          "x": 76.7371111751152,
+          "y": 15.552995391705068,
+          "size": 51,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "2c56b44f-efdf-455b-b4f4-54d8a69da436",
+          "shape": "circle",
+          "color": "white",
+          "x": 7.756696428571431,
+          "y": 76.38608870967742,
+          "size": 37,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "708569c4-48b8-4219-992c-5d4577458042",
+          "shape": "circle",
+          "color": "white",
+          "x": 71.41597062211981,
+          "y": 76.94412442396313,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "3e95c6ae-0889-44cf-8a95-38abe338cdb5",
+          "shape": "circle",
+          "color": "white",
+          "x": 47.127016129032256,
+          "y": 30.241935483870968,
+          "size": 47,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.5,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            0.7924628774994877,
+            1.6,
+            -4.565688429369087
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            2.4811778922385885,
+            0,
+            -0.5468896322067299
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -1.974873734152916,
+            3.2442705921612323,
+            -2.4748737341529163
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "03 \u00b7 Three-quarter left",
+    "sourceId": "e48a5d5f-0dc8-4364-99b7-a5fa56bec2ca",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -6.363961030678929,
+        5.51091059616309e-16,
+        6.363961030678926
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 63.52606566820276,
+          "y": 28.308611751152068,
+          "size": 40,
+          "strength": 3.1,
+          "softness": 0.8
+        },
+        {
+          "id": "295fc2f5-3e6e-417b-a3e4-03e4ab72531f",
+          "shape": "circle",
+          "color": "white",
+          "x": 32.07265264976958,
+          "y": 45.64732142857143,
+          "size": 47,
+          "strength": 8,
+          "softness": 0.12
+        },
+        {
+          "id": "1640c70d-ca1a-499a-be52-588301a50b7f",
+          "shape": "circle",
+          "color": "white",
+          "x": 62.996831797235025,
+          "y": 84.59821428571428,
+          "size": 44,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c8e37191-2295-423f-807c-e5ce0990cd55",
+          "shape": "circle",
+          "color": "white",
+          "x": 80.63436059907833,
+          "y": 32.62528801843318,
+          "size": 45,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -1.3746370308369942,
+            1.134059662356253,
+            -2.121320343559642
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -5.975023994109546,
+            0,
+            -9.090455087278336
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            1.8983982408955082,
+            0.5,
+            -2.136355815687069
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "04 \u00b7 Low hero",
+    "sourceId": "a81a987f-5952-47e9-86fb-7848fde4465b",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        4.081272364828637,
+        -2.329371405922688,
+        7.675756948819828
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "f1dc5536-d0c0-4621-9fdb-256eb8d3d3e5",
+          "shape": "circle",
+          "color": "white",
+          "x": 43.98041474654378,
+          "y": 65.73660714285714,
+          "size": 48,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "24ee260c-cf5e-4a45-93ee-6e7b9f31d433",
+          "shape": "circle",
+          "color": "white",
+          "x": 41.3594470046083,
+          "y": 16.517857142857146,
+          "size": 60,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c23e3522-e0b4-4748-9b1f-07f18e3d85ed",
+          "shape": "circle",
+          "color": "white",
+          "x": 86.73495103686636,
+          "y": 68.99121543778801,
+          "size": 36,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c3ace17e-559c-488d-a11f-858d7140dcc4",
+          "shape": "circle",
+          "color": "white",
+          "x": 91.07322868663594,
+          "y": 19.516849078341014,
+          "size": 44,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 30,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": -8,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            1.2990672284791032,
+            -1.2130341149474753,
+            -4.14307522394947
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            5.61825463984938,
+            0.3809297907595629,
+            -2.0712574191352453
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -1.3498207377936564,
+            -0.9980145123963616,
+            -2.9850165912077102
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "05 \u00b7 Floating diagonal",
+    "sourceId": "a0b083ca-ae65-4fa4-aed0-4db44b6e6889",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -3.5266034603795124,
+        3.3714593407432076,
+        7.562825526676828
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 75.57463677675372,
+          "y": 38.46790194572452,
+          "size": 59,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "a86c0ab1-24f9-4fe0-852e-f3336bff7f85",
+          "shape": "circle",
+          "color": "white",
+          "x": 40.227174539170505,
+          "y": 78.24380760368663,
+          "size": 51,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "f8ca1694-0b66-48d0-b47c-e7dcb7f7c76d",
+          "shape": "circle",
+          "color": "white",
+          "x": 44.299035138248854,
+          "y": 44.26123271889401,
+          "size": 28,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "71cdb447-d890-4ffe-b6dd-ffe024f49b14",
+          "shape": "circle",
+          "color": "white",
+          "x": 17.027289746543783,
+          "y": 28.10699884792627,
+          "size": 26,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 28,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": 24,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -2.0173410647864043,
+            -0.163901849797654,
+            -2.520941842225609
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            1.3854154913885208,
+            -2.4748479157154426,
+            -2.867545830471581
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -0.09672879120891753,
+            4.45488299786839,
+            -2.9410988159298768
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "06 \u00b7 Screen portrait",
+    "sourceId": "29b07468-e055-4614-9372-196cafc5f467",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        3.031416799501185,
+        1.5628335990023738,
+        8.328749205584911
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 67.6019265232975,
+          "y": 72.73585509472606,
+          "size": 62,
+          "strength": 4,
+          "softness": 0.8
+        },
+        {
+          "id": "0757a09e-149a-4bdb-87ea-5a434c5b79fb",
+          "shape": "circle",
+          "color": "white",
+          "x": 4.075460829493089,
+          "y": 32.61808755760369,
+          "size": 53,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "319b51f5-d4d9-4f2e-83d3-a332c5f19423",
+          "shape": "circle",
+          "color": "white",
+          "x": 21.95420506912442,
+          "y": 75.20521313364056,
+          "size": 38,
+          "strength": 1.8,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 30,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": -12,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            1.0438838238622425,
+            0.6781335517699043,
+            -2.7762497351949706
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            4.498454656414628,
+            -2.427630141858053,
+            -3.1417379901137217
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -0.23673299253701652,
+            1.4198376659295722,
+            -3.2389580243941323
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "07 \u00b7 Floating screen",
+    "sourceId": "dc7ceb7b-f260-45c5-a6a3-ac361cec5854",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -3.3202392977293416,
+        -1.5628335990023727,
+        8.217880636006042
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 82.1017345110087,
+          "y": 21.197756656426016,
+          "size": 78,
+          "strength": 4.7,
+          "softness": 0.8
+        },
+        {
+          "id": "ae152fe7-3920-422b-8b29-e6b401a20b6c",
+          "shape": "circle",
+          "color": "white",
+          "x": 7.09245391705069,
+          "y": 41.629464285714285,
+          "size": 47,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "754a0777-cf3d-4830-a273-83e2fd511a59",
+          "shape": "circle",
+          "color": "white",
+          "x": 54.62809619815668,
+          "y": 56.732430875576036,
+          "size": 41,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "983c2005-eec7-4fcc-a6b0-688701d2506a",
+          "shape": "circle",
+          "color": "white",
+          "x": 84.59641417050692,
+          "y": 81.84763824884793,
+          "size": 33,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "48fc0a18-4eda-41b1-8be2-6952e35d5864",
+          "shape": "circle",
+          "color": "white",
+          "x": 30.20053283410138,
+          "y": 61.42353110599078,
+          "size": 38,
+          "strength": 1.5,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 30,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": 16,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -0.7736129794012633,
+            -1.6827189493305263,
+            -2.739293545335347
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -5.261082787400632,
+            -1.1014110128732726,
+            -2.6660648313269273
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            1.0742593700992125,
+            -0.44963258407690687,
+            -3.195842469557905
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "09 \u00b7 Edge study",
+    "sourceId": "87a4858b-c4bd-4c8b-bd4b-1538c1afe20b",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        8.717655019705797,
+        -1.2525579086405882,
+        1.8529947768140744
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 32.5213613671275,
+          "y": 35.17969150025602,
+          "size": 40,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "f81025cc-800f-4b6b-a499-428cdd1af042",
+          "shape": "square",
+          "color": "white",
+          "x": 1.087341589861758,
+          "y": 18.206365207373274,
+          "size": 39,
+          "strength": 2,
+          "softness": 0.12
+        },
+        {
+          "id": "79f40d44-13f0-4ed4-b85e-117d3ca59005",
+          "shape": "circle",
+          "color": "white",
+          "x": 58.08431739631336,
+          "y": 14.235311059907836,
+          "size": 53,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "a983ed97-13bd-47d1-8b5d-bcf564f37d48",
+          "shape": "circle",
+          "color": "white",
+          "x": 34.92223502304147,
+          "y": 65.50259216589862,
+          "size": 41,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "71ddc65f-78fe-46a8-9204-18a1d7e721c6",
+          "shape": "circle",
+          "color": "white",
+          "x": 4.718101958525345,
+          "y": 95.77332949308756,
+          "size": 66,
+          "strength": 1.9,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 28,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": 12,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            2.8174963538180586,
+            -0.0016833858137689228,
+            -0.6176649256046914
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            4.495328428974898,
+            3.025880011410182,
+            2.576057544426831
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -2.305947610818802,
+            -2.20902952621173,
+            -0.7206090798721401
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "10 \u00b7 Overhead",
+    "sourceId": "b5033ae2-5f55-41da-800a-854b6f01e1fd",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -3.318190438451514,
+        6.894399988070802,
+        4.738867060665267
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 66.41365047363031,
+          "y": 53.332213261648754,
+          "size": 59,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "4587fe73-7b33-4a9f-b9fe-929dac4efb66",
+          "shape": "circle",
+          "color": "white",
+          "x": 79.48768721198157,
+          "y": 81.92684331797236,
+          "size": 41,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "ee960c86-0b95-4403-8794-96e85f7fb37a",
+          "shape": "circle",
+          "color": "white",
+          "x": 54.65869815668203,
+          "y": 34.16978686635945,
+          "size": 60,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "4b31bcd7-a72b-49fa-9963-d7337e78d57d",
+          "shape": "circle",
+          "color": "white",
+          "x": 21.31876440092166,
+          "y": 73.89112903225805,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.7
+        },
+        {
+          "id": "462af38c-6075-4621-aa26-fa1db0ee463f",
+          "shape": "circle",
+          "color": "white",
+          "x": 17.227102534562217,
+          "y": 26.965725806451612,
+          "size": 71,
+          "strength": 2,
+          "softness": 1
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": -20,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -1.7772731823926775,
+            0.4539998268960508,
+            -1.5796223535550893
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -5.75435271480305,
+            -1.6967051855745996,
+            -0.09282427959878861
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            2.413086741602586,
+            1.8652828094774252,
+            -1.8428927458142708
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "12 \u00b7 Low sweep",
+    "sourceId": "ae175fdd-c7f7-4e3d-b044-6c5e2833210d",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -4.906033277648488,
+        -4.769273378098843,
+        5.846782784024329
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 22.14061699948796,
+          "y": 54.36723950332822,
+          "size": 66,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "8b69b4be-7f0f-4b1e-99c5-fbe6c2662ab2",
+          "shape": "circle",
+          "color": "white",
+          "x": 50,
+          "y": 50,
+          "size": 50,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "3eca02cc-02ed-4c92-bbd7-cb7c53c91ee4",
+          "shape": "circle",
+          "color": "white",
+          "x": 35.447868663594484,
+          "y": 8.122119815668203,
+          "size": 45,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "ce9beb98-1d05-467b-974c-acc7952ff078",
+          "shape": "circle",
+          "color": "white",
+          "x": 59.57841301843318,
+          "y": 78.92065092165899,
+          "size": 61,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "e2301f09-265c-4018-9789-8b8ab525cb1e",
+          "shape": "circle",
+          "color": "white",
+          "x": 77.28254608294931,
+          "y": 39.20290898617512,
+          "size": 40,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 35,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": -18,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -0.8830124379295984,
+            0.7256819811143755,
+            -1.948927594674776
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -2.680326383294429,
+            5.11311764785235,
+            -1.6345881433060285
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -0.17668730058375426,
+            -2.9429542360111616,
+            -2.2737488604539053
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "13 \u00b7 Screen editorial",
+    "sourceId": "24af63b1-d591-445d-bf93-e14b90d9c776",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        -4.279754323328194,
+        2.7811529493745266,
+        7.412751931916983
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 73.4459005376344,
+          "y": 33.138680875576036,
+          "size": 57,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "7fe5eabd-1e58-46c3-a7aa-e063ea4cf1c1",
+          "shape": "circle",
+          "color": "white",
+          "x": 9.131984447004612,
+          "y": 72.67065092165899,
+          "size": 47,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "5bb15ccd-4b36-4cc8-83ee-861ac8581fed",
+          "shape": "circle",
+          "color": "white",
+          "x": 52.48055875576037,
+          "y": 68.15956221198157,
+          "size": 53,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "08440976-0f2d-40b2-bb33-693c826aa224",
+          "shape": "circle",
+          "color": "white",
+          "x": 13.446860599078343,
+          "y": 16.92828341013825,
+          "size": 53,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 30,
+      "exposure": 1.05,
+      "reflection": false,
+      "roll": -22,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            -1.0708123826182492,
+            1.8076185529380902,
+            -2.4709173106389946
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            -5.5549723988123905,
+            1.5430078911649434,
+            -1.6617485658893245
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "color": "#ffffff",
+          "position": [
+            1.672258123522222,
+            0.27275010742158157,
+            -2.8827368624121603
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4
+        }
+      ]
+    }
+  },
+  {
+    "name": "14 \u00b7 Bottom-up close-up",
+    "sourceId": "29665992-8fd6-4a46-a9e7-972a6e4d39d7",
+    "camera": {
+      "projection": "perspective",
+      "position": [
+        0,
+        -5.5352257484397995,
+        3.5946176310991813
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "zoom": 1,
+      "orthoHeight": 5.1
+    },
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "bottom-corner-left",
+          "shape": "circle",
+          "color": "white",
+          "x": 9.294412442396313,
+          "y": 46.565380184331794,
+          "size": 20,
+          "strength": 5,
+          "softness": 0.65
+        },
+        {
+          "id": "bottom-corner-right",
+          "shape": "circle",
+          "color": "white",
+          "x": 40.63358294930876,
+          "y": 44.60685483870968,
+          "size": 20,
+          "strength": 5,
+          "softness": 0.65
+        },
+        {
+          "id": "29cb7e3b-52af-4161-ad60-47d6b7e981cc",
+          "shape": "circle",
+          "color": "white",
+          "x": 47.22782258064517,
+          "y": 14.188508064516128,
+          "size": 45,
+          "strength": 3.5,
+          "softness": 0.12
+        },
+        {
+          "id": "0857abff-1793-4c34-b79b-ce71bfc33f09",
+          "shape": "circle",
+          "color": "white",
+          "x": 5.409346198156683,
+          "y": 15.805011520737331,
+          "size": 42,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "f7e894f7-2681-4bbc-ae47-3f8b0a2800f6",
+          "shape": "circle",
+          "color": "white",
+          "x": 24.87759216589862,
+          "y": 51.50489631336406,
+          "size": 34,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "5d0dabfe-3cf7-4627-9dca-70c4e1275928",
+          "shape": "circle",
+          "color": "white",
+          "x": 50.9900633640553,
+          "y": 88.05443548387098,
+          "size": 70,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#92979d",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.5,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "color": "#f4f7ff",
+          "position": [
+            -0.6,
+            -4.80041286283801,
+            -0.6164189463860112
+          ],
+          "power": 0.85,
+          "width": 5,
+          "height": 3.2
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": false,
+          "color": "#edf3ff",
+          "position": [
+            -3.4,
+            3,
+            0.4
+          ],
+          "power": 6,
+          "width": 1.4,
+          "height": 6
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "color": "#ffffff",
+          "position": [
+            3.4,
+            3,
+            0.4
+          ],
+          "power": 6.5,
+          "width": 1.2,
+          "height": 6
+        }
+      ]
+    }
+  }
+]

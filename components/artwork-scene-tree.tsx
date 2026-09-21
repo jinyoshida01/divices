@@ -1,0 +1,13 @@
+'use client';
+import {useState} from 'react';
+import {ChevronRight,ChevronDown,Folder} from 'lucide-react';
+import {Checkbox} from '@/components/ui/checkbox';
+import {folderScenes,selectionState,toggleSceneGroup} from '@/lib/artwork-scopes';
+import {DEVICES,type SavedScene,type SceneFolder} from '@/lib/studio-config';
+export function ArtworkSceneTree({scenes,folders,selected,onChange,disabled}:{scenes:SavedScene[];folders:SceneFolder[];selected:Set<string>;onChange:(ids:Set<string>)=>void;disabled:boolean}){
+ const [collapsed,setCollapsed]=useState(new Set<string>());
+ const rows=(items:SavedScene[])=>items.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(s=><label className="artwork-tree-scene" key={s.id}><Checkbox className="scene-checkbox" checked={selected.has(s.id)} disabled={disabled} aria-label={'Assign artwork to '+s.name} onCheckedChange={()=>onChange(toggleSceneGroup([s.id],selected))}/><span><strong>{s.name}</strong><small>{DEVICES.find(d=>d.id===s.snapshot.device)?.name}</small></span></label>);
+ const tree=(parentId:string|null)=>folders.filter(f=>f.parentId===parentId).map(f=>{const ids=folderScenes(f.id,scenes,folders).map(s=>s.id);return <div className="artwork-tree-folder" key={f.id}><div className="artwork-tree-heading"><Checkbox className="scene-checkbox" aria-label={'Assign artwork to folder '+f.name} checked={selectionState(ids,selected)} disabled={disabled||!ids.length} onCheckedChange={()=>onChange(toggleSceneGroup(ids,selected))}/><button type="button" disabled={disabled} aria-expanded={!collapsed.has(f.id)} onClick={()=>setCollapsed(old=>{const next=new Set(old);next.has(f.id)?next.delete(f.id):next.add(f.id);return next})}>{collapsed.has(f.id)?<ChevronRight size={14}/>:<ChevronDown size={14}/>}<Folder size={14}/><span>{f.name}</span><small>{ids.length}</small></button></div>{!collapsed.has(f.id)&&<div className="artwork-tree-children">{rows(scenes.filter(s=>s.folderId===f.id))}{tree(f.id)}</div>}</div>});
+ const unfiled=scenes.filter(s=>!s.folderId);
+ return <div className="artwork-scene-picker artwork-tree" aria-label="Scenes receiving artwork">{tree(null)}{!!unfiled.length&&<div className="artwork-tree-folder"><div className="artwork-tree-heading"><Checkbox className="scene-checkbox" aria-label="Assign artwork to all Unfiled scenes" disabled={disabled} checked={selectionState(unfiled.map(s=>s.id),selected)} onCheckedChange={()=>onChange(toggleSceneGroup(unfiled.map(s=>s.id),selected))}/><span><Folder size={14}/>Unfiled</span></div>{rows(unfiled)}</div>}{!scenes.length&&<p>No saved scenes yet. Use Current scene only.</p>}</div>;
+}

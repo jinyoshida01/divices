@@ -1,0 +1,688 @@
+[
+  {
+    "angle": 0,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 80.36291564039409,
+          "y": 43.92318349753695,
+          "size": 40,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "befc8afc-89aa-479d-9d7c-4426bbb6cd3a",
+          "shape": "circle",
+          "color": "white",
+          "x": 66.19793321945019,
+          "y": 7.890587756237085,
+          "size": 51,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "708569c4-48b8-4219-992c-5d4577458042",
+          "shape": "circle",
+          "color": "white",
+          "x": 69.06067505561735,
+          "y": 75.11222787223899,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": true,
+          "position": [
+            -5.623984758848893,
+            -3.6739403974420604e-16,
+            -2.0906447408001605
+          ],
+          "power": 2.4,
+          "width": 0.95,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "position": [
+            5.623984758848893,
+            -3.6739403974420604e-16,
+            -2.0906447408001605
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "position": [
+            0.5,
+            0.5000000000000002,
+            -3.5
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "angle": 45,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 79.2352986453202,
+          "y": 43.145782019704434,
+          "size": 40,
+          "strength": 5.7,
+          "softness": 0.8
+        },
+        {
+          "id": "befc8afc-89aa-479d-9d7c-4426bbb6cd3a",
+          "shape": "circle",
+          "color": "white",
+          "x": 26.365728785952655,
+          "y": 26.298069283330683,
+          "size": 51,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "708569c4-48b8-4219-992c-5d4577458042",
+          "shape": "circle",
+          "color": "white",
+          "x": 34.26811040044494,
+          "y": 80.84652590179564,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c25c68cd-ac2b-4f8d-a95e-a4bdd8d456a5",
+          "shape": "circle",
+          "color": "white",
+          "x": 79.4411945812808,
+          "y": 67.65317118226601,
+          "size": 38,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "position": [
+            2.1213203435596424,
+            1.5999999999999999,
+            -2.121320343559643
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "position": [
+            5.975023994109546,
+            -3.6739403974420604e-16,
+            -0.5468896322067299
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "position": [
+            -1.974873734152916,
+            0.5000000000000002,
+            -2.4748737341529163
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "angle": 135,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "preset-corner-outline",
+          "shape": "circle",
+          "color": "white",
+          "x": 68.64608990147784,
+          "y": 34.598214285714285,
+          "size": 40,
+          "strength": 2.8,
+          "softness": 0.8
+        },
+        {
+          "id": "befc8afc-89aa-479d-9d7c-4426bbb6cd3a",
+          "shape": "circle",
+          "color": "white",
+          "x": 24.772440608612754,
+          "y": 37.050840219291274,
+          "size": 51,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "708569c4-48b8-4219-992c-5d4577458042",
+          "shape": "circle",
+          "color": "white",
+          "x": 59.31429266645479,
+          "y": 72.85314535992373,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "d7d391b9-6d90-4a66-a290-3bbc029a7a5d",
+          "shape": "circle",
+          "color": "white",
+          "x": 86.89193349753694,
+          "y": 83.70535714285714,
+          "size": 38,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "f0c39487-aaa2-4a87-8186-c161dfaf7101",
+          "shape": "circle",
+          "color": "white",
+          "x": 6.883081896551728,
+          "y": 62.396089901477836,
+          "size": 40,
+          "strength": 5.2,
+          "softness": 1
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "position": [
+            2.121320343559643,
+            1.5999999999999999,
+            2.1213203435596424
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": false,
+          "position": [
+            5.975023994109546,
+            -3.6739403974420604e-16,
+            0.5468896322067286
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "position": [
+            -1.9748737341529163,
+            0.5000000000000002,
+            2.474873734152916
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "angle": 180,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "551ed10c-2765-4dd2-836f-9cf0aa3068b7",
+          "shape": "circle",
+          "color": "white",
+          "x": 72.52155172413792,
+          "y": 49.66517857142856,
+          "size": 27,
+          "strength": 3.7,
+          "softness": 0
+        },
+        {
+          "id": "6e006816-593a-4679-b581-68d86f07895c",
+          "shape": "circle",
+          "color": "white",
+          "x": 11.857296798029555,
+          "y": 19.6236145320197,
+          "size": 51,
+          "strength": 7.9,
+          "softness": 0.12
+        },
+        {
+          "id": "d6172e5e-6e83-4e81-9a3b-4b0392f3f067",
+          "shape": "circle",
+          "color": "white",
+          "x": 21.467056650246295,
+          "y": 63.25046182266011,
+          "size": 30,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.6,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "position": [
+            -5.623984758848893,
+            -3.6739403974420604e-16,
+            2.0906447408001605
+          ],
+          "power": 2.4,
+          "width": 0.95,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "position": [
+            -1.1,
+            -0.6,
+            -2.4
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": false,
+          "position": [
+            0.5,
+            0.5000000000000002,
+            3.5
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "angle": 235,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "f2d21c27-30a2-4425-a98f-ecc1727cd228",
+          "shape": "circle",
+          "color": "white",
+          "x": 89.52239839901478,
+          "y": 22.737068965517242,
+          "size": 49,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "8401734a-814b-4e41-a92a-dfe385d38d21",
+          "shape": "circle",
+          "color": "white",
+          "x": 82.3602986453202,
+          "y": 68.75384852216749,
+          "size": 39,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "e36b9493-9a62-43d1-8238-d593d7b3bda5",
+          "shape": "circle",
+          "color": "white",
+          "x": 51.19304187192118,
+          "y": 25.98137315270936,
+          "size": 57,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "af3bec6f-a38e-4c06-a00f-027cb45c9dbb",
+          "shape": "circle",
+          "color": "white",
+          "x": 42.841748768472904,
+          "y": 67.5569581280788,
+          "size": 43,
+          "strength": 7.1,
+          "softness": 0.85
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "position": [
+            -2.457456132866975,
+            1.5999999999999999,
+            1.7207293090531395
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "position": [
+            -5.979216341850687,
+            -3.6739403974420604e-16,
+            -0.49897087825412234
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "position": [
+            2.367032155011471,
+            0.5000000000000002,
+            2.0075175272286625
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "angle": 325,
+    "device": "iphone-16-pro-max",
+    "settings": {
+      "hdriShapes": [
+        {
+          "id": "f72fcf39-4dee-4992-87c3-9da0074d73a2",
+          "shape": "circle",
+          "color": "white",
+          "x": 18.517164408866996,
+          "y": 18.38439039408867,
+          "size": 45,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "c963a032-f010-4ed3-91ce-58cc004a5ee1",
+          "shape": "circle",
+          "color": "white",
+          "x": 54.242995689655174,
+          "y": 40.38254310344828,
+          "size": 48,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "d77e12f4-0c3f-4940-a6f2-e893c2c12cc8",
+          "shape": "circle",
+          "color": "white",
+          "x": 73.80310960591133,
+          "y": 62.03432881773399,
+          "size": 46,
+          "strength": 4,
+          "softness": 0.12
+        },
+        {
+          "id": "3cbc1420-2f6c-4d37-9ffd-5f5f415cbd45",
+          "shape": "circle",
+          "color": "white",
+          "x": 13.573737684729068,
+          "y": 77.69781403940887,
+          "size": 47,
+          "strength": 4,
+          "softness": 0.12
+        }
+      ],
+      "vfx": "none",
+      "vfxStrength": 0.6,
+      "vfxColor": "#d5e8ff",
+      "vfxX": 72,
+      "vfxY": 24,
+      "vfxScale": 1,
+      "glowEnabled": false,
+      "glowColor": "#b5c7ff",
+      "glowStrength": 3,
+      "glowWidth": 1,
+      "fov": 32,
+      "exposure": 1,
+      "reflection": false,
+      "roll": 0,
+      "background": "#24262a",
+      "deviceColor": "#a3a09a",
+      "finish": "satin",
+      "screenBrightness": 1,
+      "environment": "contour",
+      "envIntensity": 0.42,
+      "envRotation": 0,
+      "envBackground": false,
+      "envBlur": 0.35,
+      "toneMapping": "neutral",
+      "lights": [
+        {
+          "id": "key",
+          "name": "Key",
+          "enabled": false,
+          "position": [
+            -1.7207293090531395,
+            1.5999999999999999,
+            -2.457456132866975
+          ],
+          "power": 0.8,
+          "width": 1.6,
+          "height": 3.2,
+          "color": "#ffffff"
+        },
+        {
+          "id": "fill",
+          "name": "Fill",
+          "enabled": true,
+          "position": [
+            -5.789283565815415,
+            -3.6739403974420613e-16,
+            -1.576133177932487
+          ],
+          "power": 3.2,
+          "width": 0.85,
+          "height": 6,
+          "color": "#ffffff"
+        },
+        {
+          "id": "rim",
+          "name": "Rim",
+          "enabled": true,
+          "position": [
+            1.5075175272286625,
+            0.5000000000000002,
+            -2.8670321550114704
+          ],
+          "power": 0.85,
+          "width": 3.6,
+          "height": 2.4,
+          "color": "#ffffff"
+        }
+      ]
+    }
+  }
+]
