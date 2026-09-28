@@ -29,8 +29,9 @@ export async function decodeBackup(file:Blob):Promise<SceneLibrary>{
   const enums={finish:['satin','polished','matte'],environment:[...ENVIRONMENTS.map(e=>e.id),'custom'],toneMapping:['aces','agx','neutral'],vfx:['none','flare','anamorphic','sparkles','bokeh']};
   for(const [key,options] of Object.entries(enums)){const v=value[key]??s[key as keyof Settings];if(!options.includes(v as string))fail();Object.assign(s,{[key]:v})}
   for(const key of ['reflection','envBackground','glowEnabled'] as const){if(typeof value[key]!=='boolean')fail();s[key]=value[key] as boolean}
+  if(value.dofEnabled!==undefined&&typeof value.dofEnabled!=='boolean')fail();s.dofEnabled=(value.dofEnabled??false) as boolean;
   for(const key of ['deviceColor','background','glowColor','vfxColor'] as const)s[key]=color(value[key]??s[key]);
-  const limits:Record<string,[number,number]>={fov:[15,70],exposure:[.2,2.5],roll:[-180,180],screenBrightness:[.4,1.6],envIntensity:[0,3],envRotation:[-180,180],envBlur:[0,1],glowStrength:[.1,3],glowWidth:[1,24],vfxStrength:[0,2],vfxX:[0,100],vfxY:[0,100],vfxScale:[.2,2]};
+  const limits:Record<string,[number,number]>={dofStrength:[0,100],dofFocus:[0,100],fov:[15,70],exposure:[.2,2.5],roll:[-180,180],screenBrightness:[.4,1.6],envIntensity:[0,3],envRotation:[-180,180],envBlur:[0,1],glowStrength:[.1,3],glowWidth:[1,24],vfxStrength:[0,2],vfxX:[0,100],vfxY:[0,100],vfxScale:[.2,2]};
   for(const [key,[min,max]] of Object.entries(limits))Object.assign(s,{[key]:number(value[key]??s[key as keyof Settings],min,max)});
   if(!Array.isArray(value.lights)||value.lights.length!==3)fail();const lights=value.lights as Record<string,unknown>[];
   s.lights=lights.map((l,i)=>{if(l.id!==['key','fill','rim'][i]||typeof l.enabled!=='boolean')fail();return {id:l.id as 'key'|'fill'|'rim',name:text(l.name,40),enabled:l.enabled as boolean,color:color(l.color),position:vector(l.position),power:number(l.power,0,15),width:number(l.width,.2,8),height:number(l.height,.2,8)}});

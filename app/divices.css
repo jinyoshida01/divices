@@ -91,3 +91,36 @@
 .divices-app .header-actions .history-controls .secondary-button:last-child{border-radius:0 6px 6px 0;margin-left:-1px}
 .divices-app .header-actions .history-controls .secondary-button:focus-visible{position:relative;z-index:1}
 @media(max-width:500px){.divices-app .header-actions .quick-guide-trigger{width:26px;height:26px;min-height:26px}.divices-app .header-actions .quick-guide-trigger svg{width:15px;height:15px}}
+
+/* Wordmark and viewport hierarchy. */
+.divices-app .brand-wordmark{display:flex;align-items:center;flex-shrink:0}
+.divices-app .brand-wordmark img{display:block;width:86px;height:auto}
+.divices-app .stage-top{align-items:flex-start;letter-spacing:0}
+.divices-app .stage-top .stage-label{position:static;flex-shrink:0;gap:6px;max-width:55%}
+.divices-app .stage-top .camera-readout{margin-left:auto}
+.divices-app .stage-bottom{justify-content:flex-end}
+.camera-settings .camera-presets{gap:6px;margin-bottom:22px}
+.camera-settings .camera-presets button{flex-direction:row;gap:6px;padding:9px 7px;min-height:36px;font-size:11px}
+.camera-settings .camera-presets button svg{flex-shrink:0}
+.default-device-colours{padding-top:22px;margin-top:22px;padding-bottom:0;margin-bottom:0;border-top:1px solid #3a424b;border-bottom:0}
+@media(max-width:850px){
+ .divices-app .view-tools,.divices-app .split-lighting .view-tools{bottom:18px}
+ .divices-app .stage-bottom{bottom:76px}
+ .divices-app .viewport-background-toggle{top:94px}
+ .divices-app .header-actions .quick-guide-trigger{margin-right:7px}
+}
+@media(max-width:500px){
+ .divices-app .stage-top .stage-label>span{font-size:12px;line-height:1.4}
+ .divices-app .stage-top .stage-label small{font-size:11px}
+ .divices-app .stage-top .camera-readout{max-width:158px;column-gap:9px;row-gap:7px}
+ .divices-app .split-lighting .stage-top{flex-direction:row}
+ .divices-app .split-lighting .view-tools{bottom:calc(43% + 18px)}
+ .divices-app .split-lighting .stage-bottom{bottom:calc(43% + 76px)}
+}
+
+.depth-of-field-controls>.toggle-row{margin-bottom:18px}
+
+.divices-app .project-name{align-items:center;gap:10px}
+.divices-app .project-name .project-name-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;margin:0}
+.divices-app .project-name .unsaved{display:block;flex:0 0 6px;width:6px;height:6px;margin:0;background:#d5ec8b;border-radius:50%}
+@media(min-width:1101px){.divices-app .project-name{display:flex}}

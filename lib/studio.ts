@@ -4,6 +4,7 @@ import {bodyMaterial} from './device-materials';
 import {centreDevice,screenAspect} from './device-geometry';
 import {createExportCamera} from './export-camera';
 import {OutlineGlow} from './outline-glow';
+import {DepthOfField,depthOfFieldRadius} from './depth-of-field';
 import {artworkCrop,screenMaterial} from './screen-artwork';
 import {HDRICompositor} from './hdri-compositor';
 import * as T from 'three';
@@ -71,6 +72,7 @@ export class Studio {
  onCameraReadout?:(readout:CameraReadout)=>void;
  private finishTexture=this.makeFinishTexture();
  private glow=new OutlineGlow();
+ private depthOfField=new DepthOfField();
  private lightHelpers=new Map<LightId,RectAreaLightHelper>();
  private lightPickers=new Map<LightId,T.Mesh>();
  private pointerStart?:{x:number;y:number;dragged:boolean};
@@ -82,7 +84,7 @@ export class Studio {
  onError?:(message:string)=>void;
  constructor(private host:HTMLElement,options:{passive?:boolean}={}){
   this.renderer=new T.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});
-  this.renderer.debug.onShaderError=(gl,program)=>{this.renderError=gl.getProgramInfoLog(program)||'The graphics effect could not compile.';this.onError?.('A graphics effect could not render. Try turning outline glow off.');};
+  this.renderer.debug.onShaderError=(gl,program)=>{this.renderError=gl.getProgramInfoLog(program)||'The graphics effect could not compile.';this.onError?.('A graphics effect could not render. Try turning depth of field or outline glow off.');};
   this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   this.renderer.outputColorSpace=T.SRGBColorSpace;
   this.renderer.toneMapping=T.NeutralToneMapping;
@@ -120,7 +122,7 @@ export class Studio {
  private renderPreview(){const bg=this.scene.background;this.helpers.visible=false;this.transform.getHelper().visible=false;if(this.lightBackground&&!(this.settings.envBackground&&this.editedEnvironment))this.scene.background=new T.Color('#e9ecf0');this.renderView(this.camera);this.scene.background=bg;if(this.editing){this.lightControls.update();const distance=this.editorCamera.position.distanceTo(this.transform.object?.position??this.lightControls.target);this.transform.setSize(4.8/Math.max(.01,distance*Math.min(1.9*Math.tan(T.MathUtils.degToRad(this.editorCamera.fov/2))/this.editorCamera.zoom,7)));this.helpers.visible=true;this.transform.getHelper().visible=true;this.scene.background=new T.Color('#202832');this.lightRenderer.toneMapping=this.renderer.toneMapping;this.lightRenderer.toneMappingExposure=this.renderer.toneMappingExposure;const environment=this.scene.environment;this.scene.environment=null;this.lightRenderer.render(this.scene,this.editorCamera);this.scene.environment=environment;this.scene.background=bg;this.helpers.visible=false;this.transform.getHelper().visible=false}}
  private reportCamera(){const now=performance.now();if(now-this.telemetryAt<32)return;this.telemetryAt=now;const value=this.getCameraReadout(),key=[value.azimuth.toFixed(1),value.elevation.toFixed(1),value.distance.toFixed(2),value.zoom.toFixed(2),value.projection].join(':');if(key!==this.telemetryKey){this.telemetryKey=key;this.onCameraReadout?.(value)}}
  private makeFinishTexture(){const w=256,h=256,data=new Uint8Array(w*h*4);let seed=7281;for(let y=0;y<h;y++)for(let x=0;x<w;x++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const value=232+Math.round((seed/4294967295)*23),i=(y*w+x)*4;data[i]=data[i+1]=data[i+2]=value;data[i+3]=255}const texture=new T.DataTexture(data,w,h,T.RGBAFormat);texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(12,24);texture.generateMipmaps=true;texture.minFilter=T.LinearMipmapLinearFilter;texture.magFilter=T.LinearFilter;texture.needsUpdate=true;return texture}
- private renderView(camera:T.Camera){this.renderer.render(this.scene,camera);if(this.settings.glowEnabled&&this.device)this.glow.render(this.renderer,this.rig,camera,this.settings.glowColor,this.settings.glowStrength,this.settings.glowWidth)}
+ private renderView(camera:T.PerspectiveCamera|T.OrthographicCamera){this.renderer.render(this.scene,camera);if(this.settings.glowEnabled&&this.device)this.glow.render(this.renderer,this.rig,camera,this.settings.glowColor,this.settings.glowStrength,this.settings.glowWidth);if(this.settings.dofEnabled&&this.device)this.depthOfField.render(this.renderer,this.scene,camera,this.device,this.settings.dofStrength,this.settings.dofFocus)}
  private onPointerDown=(e:PointerEvent)=>{this.pointerStart={x:e.clientX,y:e.clientY,dragged:false}};
  private onPointerUp=(e:PointerEvent)=>{const start=this.pointerStart;this.pointerStart=undefined;if(!this.editing||!start||start.dragged||Math.hypot(e.clientX-start.x,e.clientY-start.y)>5)return;const box=this.lightRenderer.domElement.getBoundingClientRect(),ray=new T.Raycaster();ray.setFromCamera(new T.Vector2((e.clientX-box.left)/box.width*2-1,-(e.clientY-box.top)/box.height*2+1),this.editorCamera);for(const [id,picker]of this.lightPickers){const light=this.lights.get(id)!;picker.position.copy(light.position);picker.quaternion.copy(light.quaternion);picker.scale.set(light.width,light.height,1);picker.updateMatrixWorld(true)}const hit=ray.intersectObjects([...this.lightPickers.values()],false)[0];const occlusion=this.device?ray.intersectObject(this.device,true)[0]:undefined;if(hit&&(!occlusion||occlusion.distance>hit.distance)){const id=hit.object.userData.lightId as LightId;this.setLightEdit(true,id);this.onLightSelect?.(id)}};
  private onKey=(e:KeyboardEvent)=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)||this.transform.dragging)return;e.preventDefault();const cam=this.activeCamera,s=new T.Spherical().setFromVector3(cam.position.clone().sub(this.controls.target));s.theta+=e.key==='ArrowLeft'?.1:e.key==='ArrowRight'?-.1:0;s.phi+=e.key==='ArrowUp'?-.1:e.key==='ArrowDown'?.1:0;s.makeSafe();cam.position.copy(this.controls.target).add(new T.Vector3().setFromSpherical(s));this.controls.update();this.onCameraChange?.(this.captureCamera())};
@@ -182,7 +184,7 @@ export class Studio {
  async exportPNG(size:number,transparent:boolean,name:string,download=true){
   if(!this.device)throw new Error('Wait for the device to finish loading.');
   if(this.exporting)throw new Error('An export is already in progress.');
-  const exportCamera=createExportCamera(this.device,this.camera,this.settings.fov,size,this.settings.glowEnabled?this.settings.glowWidth:0);
+  const exportCamera=createExportCamera(this.device,this.camera,this.settings.fov,size,this.settings.glowEnabled?this.settings.glowWidth:0,this.settings.dofEnabled?depthOfFieldRadius(this.settings.dofStrength):0);
   this.exporting=true;
   const ratio=this.renderer.getPixelRatio(),background=this.scene.background,helpersVisible=this.helpers.visible,gizmoVisible=this.transform.getHelper().visible;
   try{
@@ -202,5 +204,5 @@ export class Studio {
  }
 
  private disposeObject(root:T.Object3D){const materials=new Set<T.Material>(),textures=new Set<T.Texture>();root.traverse(o=>{if(o instanceof T.Mesh){o.geometry.dispose();for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m)}});for(const m of materials){for(const v of Object.values(m))if(v instanceof T.Texture&&v!==this.texture&&v!==this.lensTexture&&v!==this.finishTexture)textures.add(v);m.dispose()}textures.forEach(t=>t.dispose())}
- dispose(){this.dead=true;if(this.editTimer)clearTimeout(this.editTimer);this.editResolve?.();this.hdriCompositor.dispose();this.modelRequest++;this.envRequest++;cancelAnimationFrame(this.frame);this.observer.disconnect();this.host.removeEventListener('keydown',this.onKey);this.lightRenderer.domElement.removeEventListener('pointerdown',this.onPointerDown,true);this.lightRenderer.domElement.removeEventListener('pointerup',this.onPointerUp);this.glow.dispose();this.lightControls.dispose();this.lightRenderer.dispose();this.renderPane.remove();this.lightPane.remove();for(const picker of this.lightPickers.values()){picker.geometry.dispose();(picker.material as T.Material).dispose()}this.transform.dispose();this.controls.dispose();if(this.device)this.disposeObject(this.device);this.disposeObject(this.helpers);this.texture?.dispose();this.lensTexture.dispose();this.finishTexture.dispose();this.env?.dispose();this.envSource?.dispose();this.envCube?.dispose();this.renderer.dispose();this.renderer.domElement.remove()}
+ dispose(){this.dead=true;if(this.editTimer)clearTimeout(this.editTimer);this.editResolve?.();this.hdriCompositor.dispose();this.modelRequest++;this.envRequest++;cancelAnimationFrame(this.frame);this.observer.disconnect();this.host.removeEventListener('keydown',this.onKey);this.lightRenderer.domElement.removeEventListener('pointerdown',this.onPointerDown,true);this.lightRenderer.domElement.removeEventListener('pointerup',this.onPointerUp);this.glow.dispose();this.depthOfField.dispose();this.lightControls.dispose();this.lightRenderer.dispose();this.renderPane.remove();this.lightPane.remove();for(const picker of this.lightPickers.values()){picker.geometry.dispose();(picker.material as T.Material).dispose()}this.transform.dispose();this.controls.dispose();if(this.device)this.disposeObject(this.device);this.disposeObject(this.helpers);this.texture?.dispose();this.lensTexture.dispose();this.finishTexture.dispose();this.env?.dispose();this.envSource?.dispose();this.envCube?.dispose();this.renderer.dispose();this.renderer.domElement.remove()}
 }

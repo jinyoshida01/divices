@@ -1,7 +1,7 @@
 import * as T from 'three';
 
 /** Fit the complete device in a square export without changing the viewport camera. */
-export function createExportCamera(device:T.Object3D,source:T.PerspectiveCamera|T.OrthographicCamera,fov:number,size:number,glowWidth=0){
+export function createExportCamera(device:T.Object3D,source:T.PerspectiveCamera|T.OrthographicCamera,fov:number,size:number,glowWidth=0,blurRadius=0){
  device.updateWorldMatrix(true,true);source.updateMatrixWorld(true);
  const camera=source.clone(),bounds=new T.Box3(),point=new T.Vector3(),toView=new T.Matrix4();
  // Measure actual vertices in view space, including roll, buttons and camera protrusions.
@@ -16,7 +16,7 @@ export function createExportCamera(device:T.Object3D,source:T.PerspectiveCamera|
  const centre=bounds.getCenter(new T.Vector3()).applyMatrix4(source.matrixWorld);
  // The glow blur has finite support of 3.230769 samples in each direction.
  const halo=glowWidth>0?3.230769*Math.max(.75/size,glowWidth/1200)+2/size:0;
- const padding=.045+halo,usable=1-2*padding;
+ const padding=.045+halo+Math.max(0,blurRadius)+2/size,usable=Math.max(.1,1-2*padding);
  let distance:number;
  if(camera instanceof T.PerspectiveCamera){
   camera.aspect=1;camera.fov=fov;

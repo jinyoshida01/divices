@@ -44,7 +44,7 @@ function DefaultColours({c}:{c:DivicesController}){
  const disabled=!c.ready||c.busy||c.loading;
  return <section className="default-device-colours" aria-label="Default Colours">
   <div className="section-heading"><Palette size={16}/><h3>Default Colours</h3>{!common&&<small>Mixed</small>}</div>
-  <p className="control-hint">Apply one colour to all devices and saved scenes. Use a device’s palette icon below to give it a different colour.</p>
+  <p className="control-hint">Apply one colour to all devices and saved scenes. Use a device’s palette icon above to give it a different colour.</p>
   <div className="swatches">{COLORS.map(colour=><button disabled={disabled} key={colour.name} title={colour.name+' · All devices'} aria-label={colour.name+' for all devices'} aria-pressed={common===colour.value} style={{background:colour.value}} className={common===colour.value?'chosen':''} onClick={()=>c.setAllDeviceColours(colour.value)}/>)}<label className="custom-swatch" title="Custom colour · All devices"><Plus size={15}/><input type="color" aria-label="Custom colour for all devices" disabled={disabled} value={common??deviceFinish(c.device,c.preferences,c.scenes).deviceColor} onChange={e=>c.setAllDeviceColours(e.target.value)}/></label></div>
  </section>;
 }
@@ -52,7 +52,6 @@ function DefaultColours({c}:{c:DivicesController}){
 export function DevicePanel({c}:{c:DivicesController}){
  const info=DEVICES.find(d=>d.id===c.device)!,disabled=c.busy||c.loading;
  return <>
- <DefaultColours c={c}/>
  <div className="device-finish-intro"><div className="section-heading"><Palette size={16}/><h3>Default Device Finishes</h3></div><p className="control-hint">Use each device’s palette icon to set its own colour and surface.</p></div>
  <div className="device-list">{DEVICES.map(d=>{const artwork=c.deviceArtworks[d.id];return <div key={d.id} className={'device-card device-row '+(c.device===d.id?'selected':'')}>
   <button disabled={disabled} className="device-select" aria-pressed={c.device===d.id} onClick={()=>c.run(()=>c.chooseDevice(d.id))}>
@@ -66,5 +65,6 @@ export function DevicePanel({c}:{c:DivicesController}){
   </div>
  </div>})}</div>
  <section className="screen-section"><div className="section-heading"><ImageIcon size={16}/><h3>Default Artworks</h3></div><p className="control-hint">Set an artwork override per device. It appears in every scene, preview and export for that device, including new scenes and Essentials Kits.</p><div className="screen-dimensions"><strong>{info.screenWidth.toLocaleString()} × {info.screenHeight.toLocaleString()} px</strong><span>{info.name} · width × height</span>{info.reference&&<a href={info.reference} target="_blank" rel="noreferrer">Device specifications ↗</a>}</div><button className="secondary-button full artwork-manage" disabled={disabled} onClick={()=>c.openDeviceArtwork()}><ImagePlus size={15}/>Set device artwork overrides</button><p className="privacy">Use the artwork icons beside each device to add, replace or remove its default. Removing an override reveals each scene’s own artwork. Your scene artworks are kept.</p></section>
+ <DefaultColours c={c}/>
  </>;
 }

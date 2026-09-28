@@ -11,6 +11,7 @@ export interface Settings {
  fov: number; exposure: number; reflection: boolean; roll: number; background: string;
  deviceColor: string; finish: 'satin' | 'polished' | 'matte'; screenBrightness: number;
  environment: EnvironmentId; envIntensity: number; envRotation: number; envBackground: boolean; envBlur: number;
+ dofEnabled:boolean; dofStrength:number; dofFocus:number;
  glowEnabled:boolean; glowColor:string; glowStrength:number; glowWidth:number;
  vfx: 'none'|'flare'|'anamorphic'|'sparkles'|'bokeh'; vfxStrength:number; vfxColor:string; vfxX:number; vfxY:number; vfxScale:number;
  toneMapping: 'aces' | 'agx' | 'neutral'; lights: StudioLight[]; hdriShapes:HDRIShape[];
@@ -36,7 +37,7 @@ export const DEVICES = [
 export const COLORS = [{name:'Natural',value:'#a3a09a'},{name:'Black',value:'#292c31'},{name:'Silver',value:'#c4c8ce'},{name:'Blue',value:'#435874'},{name:'Desert',value:'#b59c80'},{name:'Violet',value:'#797188'}];
 export const ENVIRONMENTS = [{id:'none',name:'No HDRI'},{id:'screen-soft',name:'Screen Soft Light'},{id:'contour',name:'Contour · Dark Studio'},{id:'softbox',name:'Softbox Room'},{id:'strip',name:'Strip Lights'},{id:'daylight',name:'Daylight Loft'},{id:'studio-hdri',name:'Photo Room · HDRI'},{id:'photo-studio',name:'Photo Studio · HDRI'},{id:'daylight-interior',name:'Daylight Interior · HDRI'},{id:'overcast-plaza',name:'Overcast Plaza · HDRI'}];
 export const PHOTO_HDRIS:Partial<Record<EnvironmentId,string>>={'studio-hdri':'studio-small-03-1k.hdr','photo-studio':'photo_studio_01-2k.hdr','daylight-interior':'poly_haven_studio-2k.hdr','overcast-plaza':'potsdamer_platz-2k.hdr'};
-export function defaultSettings(): Settings {return {hdriShapes:[],vfx:'none',vfxStrength:.6,vfxColor:'#d5e8ff',vfxX:72,vfxY:24,vfxScale:1,glowEnabled:false,glowColor:'#b5c7ff',glowStrength:3,glowWidth:1,fov:32,exposure:1,reflection:true,roll:0,background:'#24262a',deviceColor:'#a3a09a',finish:'satin',screenBrightness:1,environment:'softbox',envIntensity:.8,envRotation:0,envBackground:false,envBlur:0,toneMapping:'neutral',lights:[
+export function defaultSettings(): Settings {return {dofEnabled:false,dofStrength:35,dofFocus:50,hdriShapes:[],vfx:'none',vfxStrength:.6,vfxColor:'#d5e8ff',vfxX:72,vfxY:24,vfxScale:1,glowEnabled:false,glowColor:'#b5c7ff',glowStrength:3,glowWidth:1,fov:32,exposure:1,reflection:true,roll:0,background:'#24262a',deviceColor:'#a3a09a',finish:'satin',screenBrightness:1,environment:'softbox',envIntensity:.8,envRotation:0,envBackground:false,envBlur:0,toneMapping:'neutral',lights:[
  {id:'key',name:'Key',enabled:true,power:5,color:'#fff1df',position:[-3.5,3.4,4],width:3,height:4},
  {id:'fill',name:'Fill',enabled:true,power:2,color:'#dce8ff',position:[4,1.2,2.5],width:2.5,height:4},
  {id:'rim',name:'Rim',enabled:true,power:5,color:'#ffffff',position:[2.5,3,-3],width:1.2,height:4},
@@ -58,7 +59,7 @@ export function screenLighting(position:Vec3,variation=0):Pick<Settings,'lights'
  ]};
 }
 export const ORBIT_ANGLES=[0,45,90,135,180,235,270,325] as const;
-export const CAMERA_PRESETS:{id:CameraPreset;name:string}[]=[{id:'hero',name:'Hero'},{id:'front',name:'Front'},{id:'bottom',name:'Bottom Angle'},{id:'bottom-up',name:'Low Three-quarter'},{id:'slight-left',name:'Slight Left'},{id:'slight-right',name:'Slight Right'},{id:'side',name:'Side Profile'},{id:'isometric',name:'Isometric'}];
+export const CAMERA_PRESETS:{id:CameraPreset;name:string}[]=[{id:'hero',name:'Hero'},{id:'front',name:'Front'},{id:'bottom',name:'Angled Left'},{id:'bottom-up',name:'Angled Right'},{id:'slight-left',name:'Slight Left'},{id:'slight-right',name:'Slight Right'},{id:'side',name:'Side Profile'},{id:'isometric',name:'Isometric'}];
 interface StartingStudio {id:string;name:string;device:string;description:string;camera:CameraPreset;color:string;env:EnvironmentId;settings:Settings;cameraState:CameraState}
 function startingStudio(id:string,name:string,device:string,description:string,camera:CameraPreset,color:string,env:EnvironmentId,treatment:Partial<Settings>,position:Vec3):StartingStudio{
  const settings={...settingsFor(camera,{...defaultSettings(),deviceColor:color,environment:env}),...treatment};
