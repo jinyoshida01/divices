@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A Three.js workspace for premium device screen mockups.",
+  "description": "Create 3D device mockups in your browser. Built with Three.js.",
   "engines": {
     "node": ">=22.13.0"
   },
