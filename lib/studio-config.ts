@@ -4,7 +4,7 @@ export type Vec3 = [number, number, number];
 export type LightId = 'key' | 'fill' | 'rim';
 export type Projection = 'perspective' | 'orthographic';
 export type CameraPreset = 'hero' | 'front' | 'bottom' | 'bottom-up' | 'slight-left' | 'slight-right' | 'side' | 'isometric';
-export type EnvironmentId = 'none' | 'softbox' | 'strip' | 'daylight' | 'screen-soft' | 'contour' | 'studio-hdri' | 'custom';
+export type EnvironmentId = 'none' | 'softbox' | 'strip' | 'daylight' | 'screen-soft' | 'contour' | 'studio-hdri' | 'photo-studio' | 'daylight-interior' | 'overcast-plaza' | 'custom';
 export interface HDRIShape {id:string;shape:'circle'|'square';color:'white'|'black';x:number;y:number;size:number;strength:number;softness:number}
 export interface StudioLight { id: LightId; name: string; enabled: boolean; power: number; color: string; position: Vec3; width: number; height: number }
 export interface Settings {
@@ -34,7 +34,8 @@ export const DEVICES = [
  {id:'galaxy-tab-a7-lite',screenWidth:800,screenHeight:1340,reference:'https://www.samsung.com/sg/business/tablets/galaxy-tab-a/galaxy-tab-a7-lite-wifi-sm-t220nzafxsp/',name:'Galaxy Tab A7 Lite',detail:'8.7″ · Aluminium'},
 ];
 export const COLORS = [{name:'Natural',value:'#a3a09a'},{name:'Black',value:'#292c31'},{name:'Silver',value:'#c4c8ce'},{name:'Blue',value:'#435874'},{name:'Desert',value:'#b59c80'},{name:'Violet',value:'#797188'}];
-export const ENVIRONMENTS = [{id:'none',name:'No HDRI'},{id:'screen-soft',name:'Screen soft light'},{id:'contour',name:'Contour · dark studio'},{id:'softbox',name:'Softbox room'},{id:'strip',name:'Strip lights'},{id:'daylight',name:'Daylight loft'},{id:'studio-hdri',name:'Photo room · HDRI'}];
+export const ENVIRONMENTS = [{id:'none',name:'No HDRI'},{id:'screen-soft',name:'Screen Soft Light'},{id:'contour',name:'Contour · Dark Studio'},{id:'softbox',name:'Softbox Room'},{id:'strip',name:'Strip Lights'},{id:'daylight',name:'Daylight Loft'},{id:'studio-hdri',name:'Photo Room · HDRI'},{id:'photo-studio',name:'Photo Studio · HDRI'},{id:'daylight-interior',name:'Daylight Interior · HDRI'},{id:'overcast-plaza',name:'Overcast Plaza · HDRI'}];
+export const PHOTO_HDRIS:Partial<Record<EnvironmentId,string>>={'studio-hdri':'studio-small-03-1k.hdr','photo-studio':'photo_studio_01-2k.hdr','daylight-interior':'poly_haven_studio-2k.hdr','overcast-plaza':'potsdamer_platz-2k.hdr'};
 export function defaultSettings(): Settings {return {hdriShapes:[],vfx:'none',vfxStrength:.6,vfxColor:'#d5e8ff',vfxX:72,vfxY:24,vfxScale:1,glowEnabled:false,glowColor:'#b5c7ff',glowStrength:3,glowWidth:1,fov:32,exposure:1,reflection:true,roll:0,background:'#24262a',deviceColor:'#a3a09a',finish:'satin',screenBrightness:1,environment:'softbox',envIntensity:.8,envRotation:0,envBackground:false,envBlur:.35,toneMapping:'neutral',lights:[
  {id:'key',name:'Key',enabled:true,power:5,color:'#fff1df',position:[-3.5,3.4,4],width:3,height:4},
  {id:'fill',name:'Fill',enabled:true,power:2,color:'#dce8ff',position:[4,1.2,2.5],width:2.5,height:4},
@@ -57,7 +58,7 @@ export function screenLighting(position:Vec3,variation=0):Pick<Settings,'lights'
  ]};
 }
 export const ORBIT_ANGLES=[0,45,90,135,180,235,270,325] as const;
-export const CAMERA_PRESETS:{id:CameraPreset;name:string}[]=[{id:'hero',name:'Hero'},{id:'front',name:'Front'},{id:'bottom',name:'Bottom angle'},{id:'bottom-up',name:'Low three-quarter'},{id:'slight-left',name:'Slight left'},{id:'slight-right',name:'Slight right'},{id:'side',name:'Side profile'},{id:'isometric',name:'Isometric'}];
+export const CAMERA_PRESETS:{id:CameraPreset;name:string}[]=[{id:'hero',name:'Hero'},{id:'front',name:'Front'},{id:'bottom',name:'Bottom Angle'},{id:'bottom-up',name:'Low Three-quarter'},{id:'slight-left',name:'Slight Left'},{id:'slight-right',name:'Slight Right'},{id:'side',name:'Side Profile'},{id:'isometric',name:'Isometric'}];
 interface StartingStudio {id:string;name:string;device:string;description:string;camera:CameraPreset;color:string;env:EnvironmentId;settings:Settings;cameraState:CameraState}
 function startingStudio(id:string,name:string,device:string,description:string,camera:CameraPreset,color:string,env:EnvironmentId,treatment:Partial<Settings>,position:Vec3):StartingStudio{
  const settings={...settingsFor(camera,{...defaultSettings(),deviceColor:color,environment:env}),...treatment};

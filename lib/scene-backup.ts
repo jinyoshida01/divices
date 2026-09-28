@@ -1,4 +1,4 @@
-import {defaultSettings,DEVICES,type SceneSnapshot,type SavedScene,type SceneFolder,type WorkspaceState,type DeviceArtworks,type Settings} from './studio-config';
+import {defaultSettings,DEVICES,ENVIRONMENTS,type SceneSnapshot,type SavedScene,type SceneFolder,type WorkspaceState,type DeviceArtworks,type Settings} from './studio-config';
 import {defaultPreferences} from './scene-library';
 export interface SceneLibrary {scenes:SavedScene[];folders:SceneFolder[];workspace:WorkspaceState}
 interface Asset {type:string;data:string}
@@ -26,7 +26,7 @@ export async function decodeBackup(file:Blob):Promise<SceneLibrary>{
  const getAsset=(id:unknown)=>{if(id===null)return null;if(typeof id!=='string'||!assets.has(id))fail();return assets.get(id as string)!};
  const settings=(raw:unknown):Settings=>{
   if(!raw||typeof raw!=='object')fail();const value=raw as Record<string,unknown>,s=defaultSettings();
-  const enums={finish:['satin','polished','matte'],environment:['none','softbox','strip','daylight','screen-soft','contour','studio-hdri','custom'],toneMapping:['aces','agx','neutral'],vfx:['none','flare','anamorphic','sparkles','bokeh']};
+  const enums={finish:['satin','polished','matte'],environment:[...ENVIRONMENTS.map(e=>e.id),'custom'],toneMapping:['aces','agx','neutral'],vfx:['none','flare','anamorphic','sparkles','bokeh']};
   for(const [key,options] of Object.entries(enums)){const v=value[key]??s[key as keyof Settings];if(!options.includes(v as string))fail();Object.assign(s,{[key]:v})}
   for(const key of ['reflection','envBackground','glowEnabled'] as const){if(typeof value[key]!=='boolean')fail();s[key]=value[key] as boolean}
   for(const key of ['deviceColor','background','glowColor','vfxColor'] as const)s[key]=color(value[key]??s[key]);

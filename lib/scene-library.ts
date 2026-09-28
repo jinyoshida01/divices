@@ -4,7 +4,7 @@ import {defaultExportNaming} from './export-naming';
 
 // Keep the original database and record store so existing libraries migrate in place.
 const DB='form-device-studios', RECORDS='studios';
-export const defaultPreferences:WorkspaceState['preferences']={leftPanelWidth:0,compactScenes:false,lightBackground:false,splitLights:false,exportCollapsed:false,selectedLight:'key',leftTab:'scenes',rightTab:'lights',activeScene:'',exportNaming:defaultExportNaming};
+export const defaultPreferences:WorkspaceState['preferences']={leftPanelWidth:0,compactScenes:true,lightBackground:false,splitLights:false,exportCollapsed:false,selectedLight:'key',leftTab:'scenes',rightTab:'lights',activeScene:'',exportNaming:defaultExportNaming};
 function database():Promise<IDBDatabase>{return new Promise((resolve,reject)=>{
  const request=indexedDB.open(DB,2);
  request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains(RECORDS))db.createObjectStore(RECORDS,{keyPath:'id'});if(!db.objectStoreNames.contains('folders'))db.createObjectStore('folders',{keyPath:'id'});if(!db.objectStoreNames.contains('workspace'))db.createObjectStore('workspace')};
