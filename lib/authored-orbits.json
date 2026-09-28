@@ -57,7 +57,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -173,7 +173,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -299,7 +299,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -405,7 +405,7 @@
       "envIntensity": 0.6,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -521,7 +521,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -637,7 +637,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {

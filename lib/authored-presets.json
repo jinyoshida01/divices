@@ -87,7 +87,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -233,7 +233,7 @@
       "envIntensity": 0.5,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -369,7 +369,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -505,7 +505,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -641,7 +641,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -767,7 +767,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -913,7 +913,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -1059,7 +1059,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -1205,7 +1205,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -1351,7 +1351,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -1487,7 +1487,7 @@
       "envIntensity": 0.42,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {
@@ -1643,7 +1643,7 @@
       "envIntensity": 0.5,
       "envRotation": 0,
       "envBackground": false,
-      "envBlur": 0.35,
+      "envBlur": 0,
       "toneMapping": "neutral",
       "lights": [
         {

@@ -12,10 +12,13 @@ import {essentialsKit,refreshEssentials,KIT_VIEWS} from './essentials-kit';
 import {downloadBlob} from './downloads';
 import {exportScenes} from './scene-export';
 import {WorkspaceHistory,type HistoryState} from './workspace-history';
+import {historyShortcut} from './history-shortcuts';
 import {withDeviceArtwork} from './device-artwork';
+import {deviceFinish,settingsForDevice,colourForAllDevices} from './device-finish';
 import {sameScene,newSceneSnapshot} from './scene-changes';
 import {imageFilename} from './export-naming';
 import {initializeLibrary} from './scene-library';
+import {freshWorkspace} from './workspace-reset';
 import {artworkTargets,type ArtworkTarget,type ArtworkDraft,type ArtworkScope} from './artwork-scopes';
 
 export function useDivices(){
@@ -34,6 +37,7 @@ export function useDivices(){
  async function restoreView(value:SceneSnapshot){await engine.current!.restore(withDeviceArtwork(value,defaultArtworks.current));sceneArtwork.current={artwork:value.artwork,artworkName:value.artworkName}}
  const [pendingLeave,setPendingLeave]=useState<{kind:'scene';id:string}|null>(null);
  const environmentSaves=useRef<Promise<unknown>>(Promise.resolve());
+ const workspaceSaves=useRef<Promise<unknown>>(Promise.resolve()),resetting=useRef(false);
  const [deletedFolder,setDeletedFolder]=useState<{folders:SceneFolder[];scenes:SavedScene[]}|null>(null);
  const [deletedScenes,setDeletedScenes]=useState<SavedScene[]>([]);
  const [environmentPreview,setEnvironmentPreview]=useState(''),[artworkPreview,setArtworkPreview]=useState('');
@@ -69,7 +73,14 @@ export function useDivices(){
  },[]);
  useEffect(()=>{if(ready&&!busy)engine.current?.configure(settings)},[settings,ready,busy]);
  useEffect(()=>{if(ready&&!busy){engine.current?.setLightEdit(preferences.splitLights,preferences.selectedLight);engine.current?.setPreviewBackground(preferences.lightBackground)}},[preferences.splitLights,preferences.selectedLight,preferences.lightBackground,ready,busy]);
- useEffect(()=>{if(!ready||busy||loading)return;const timer=setTimeout(async()=>{try{await saveWorkspace({current:await snapshot(),preferences:state.current.preferences,deviceArtworks:defaultArtworks.current})}catch{notice('Autosave failed. Save a backup before closing this tab.',true)}},650);return()=>clearTimeout(timer)},[device,settings,camera,transparent,resolution,preferences,imageName,hdrName,deviceArtworks,ready,busy,loading]);
+ useEffect(()=>{if(!ready||busy||loading||resetting.current)return;const timer=setTimeout(()=>{
+  workspaceSaves.current=workspaceSaves.current.catch(()=>{}).then(async()=>{
+   if(resetting.current)return;
+   const current=await snapshot();
+   if(resetting.current)return;
+   await saveWorkspace({current,preferences:state.current.preferences,deviceArtworks:defaultArtworks.current});
+  }).catch(()=>{if(!resetting.current)notice('Autosave failed. Save a backup before closing this tab.',true)});
+ },650);return()=>clearTimeout(timer)},[device,settings,camera,transparent,resolution,preferences,imageName,hdrName,deviceArtworks,ready,busy,loading]);
  useEffect(()=>{if(!ready||busy||loading)return;let alive=true;void hasUnsavedChanges().then(changed=>{if(alive)setDirty(changed)}).catch(()=>{});return()=>{alive=false}},[ready,busy,loading,device,settings,camera,transparent,resolution,imageName,hdrName,scenes,preferences.activeScene]);
  async function snapshot(){const s=state.current;return {...await engine.current!.snapshot(s.device,s.transparent,Number(s.resolution)),...sceneArtwork.current}}
  async function refresh(){const library=await readLibrary();state.current.scenes=library.scenes;state.current.folders=library.folders;setScenes(library.scenes);setFolders(library.folders);return library}
@@ -86,7 +97,7 @@ export function useDivices(){
  function changeLight<K extends keyof StudioLight>(key:K,value:StudioLight[K]){const id=state.current.preferences.selectedLight;if(JSON.stringify(state.current.settings.lights.find(l=>l.id===id)?.[key])===JSON.stringify(value))return;remember('light '+key,'light-'+id+'-'+key);const next={...state.current.settings,lights:state.current.settings.lights.map(l=>l.id===id?{...l,[key]:value}:l)};state.current.settings=next;setSettings(next);setDirty(true)}
  async function hasUnsavedChanges(fresh=false){if(fresh)await environmentSaves.current;const records=fresh?(await readLibrary()).scenes:state.current.scenes;const current=await snapshot(),saved=records.find(s=>s.id===state.current.preferences.activeScene)?.snapshot??baseline.current;return saved?!await sameScene(current,saved):dirty}
  async function guardLeave(kind:'scene',id:string){if(await hasUnsavedChanges(true)){notice('');setPendingLeave({kind,id});return true}return false}
- async function chooseDevice(id:string){if(id===state.current.device)return;if(!DEVICES.some(d=>d.id===id))throw new Error('Choose a device.');await environmentSaves.current;remember('device change');setLoading(true);try{await engine.current!.load(id);await showArtwork(id,{artwork:null,artworkName:'Green screen'});const finish=state.current.preferences.deviceFinishes?.[id];if(finish){const next={...state.current.settings,...finish};state.current.settings=next;setSettings(next);engine.current!.configure(next)}setDevice(id);state.current.device=id;pref('activeScene','');setDirty(true)}finally{setLoading(false)}}
+ async function chooseDevice(id:string){if(id===state.current.device)return;if(!DEVICES.some(d=>d.id===id))throw new Error('Choose a device.');await environmentSaves.current;remember('device change');setLoading(true);try{await engine.current!.load(id);await showArtwork(id,{artwork:null,artworkName:'Green screen'});const next=settingsForDevice(id,state.current.settings,state.current.preferences,state.current.scenes);state.current.settings=next;setSettings(next);engine.current!.configure(next);setDevice(id);state.current.device=id;pref('activeScene','');setDirty(true)}finally{setLoading(false)}}
  function applyPreset(id:CameraPreset){remember('camera preset');const s=settingsFor(id,state.current.settings,state.current.device),c=cameraFor(id);state.current.settings=s;setSettings(s);engine.current!.configure(s);quiet.current=true;try{engine.current!.setCamera(c)}finally{quiet.current=false}state.current.camera=c;setCamera(c);setViewName(CAMERA_PRESETS.find(p=>p.id===id)!.name);setDirty(true)}
  function applyOrbit(angle:number){remember('orbit angle');const r=orbitAtAngle(angle,engine.current!.captureCamera(),state.current.settings,state.current.device);state.current.settings=r.settings;setSettings(r.settings);engine.current!.configure(r.settings);quiet.current=true;try{engine.current!.setCamera(r.camera)}finally{quiet.current=false}state.current.camera=r.camera;setCamera(r.camera);setViewName(angle+'° orbit');setDirty(true)}
  function openArtwork(scope:ArtworkScope='selected',sceneId?:string,deviceOnly=false){notice('');const scene=state.current.scenes.find(s=>s.id===sceneId);setArtworkDraft({artwork:scene?.snapshot.artwork??null,name:scene?.snapshot.artworkName??'Green screen',initialScope:scope,...(sceneId?{sceneIds:[sceneId]}:{}),...(deviceOnly?{deviceOnly:true,deviceIds:[state.current.device]}:{})})}
@@ -132,7 +143,14 @@ export function useDivices(){
  async function moveScenes(ids:string[],folderId:string|null){await environmentSaves.current;if(!state.current.scenes.some(s=>ids.includes(s.id)&&(s.folderId??null)!==folderId))return;remember('move scenes');const count=await moveScenesToFolder(ids,folderId);await refresh();notice(count+(count===1?' scene moved':' scenes moved'))}
  async function arrangeLibrary(drop:LibraryDrop){await environmentSaves.current;const next=reorderLibrary(state.current.scenes,state.current.folders,drop);if(next.scenes===state.current.scenes&&next.folders===state.current.folders)return;remember('reorder '+drop.kind+'s');await saveLibraryOrder(next.scenes,next.folders);await refresh()}
  async function autoSort(mode:SortMode){await environmentSaves.current;remember('auto reorder');const next=sortLibrary(state.current.scenes,state.current.folders,mode);await saveLibraryOrder(next.scenes,next.folders);await refresh();notice('Scenes and folders reordered')}
- async function setDeviceFinish(id:string,patch:Partial<Pick<Settings,'deviceColor'|'finish'>>){await run(async()=>{await environmentSaves.current;remember('default device finish','finish-'+id);const base=state.current.preferences.deviceFinishes?.[id]??(id===state.current.device?state.current.settings:state.current.scenes.find(s=>s.snapshot.device===id)?.snapshot.settings??defaultSettings()),value={deviceColor:base.deviceColor,finish:base.finish,...patch};const records=state.current.scenes.filter(s=>s.snapshot.device===id).map(s=>({...s,snapshot:{...s.snapshot,settings:{...s.snapshot.settings,...value}}}));await putScenes(records);pref('deviceFinishes',{...state.current.preferences.deviceFinishes,[id]:value});if(id===state.current.device){const next={...state.current.settings,...value};state.current.settings=next;setSettings(next);engine.current!.configure(next)}await refresh();notice('Default finish applied to all scenes for '+DEVICES.find(d=>d.id===id)?.name)})}
+ async function setDeviceFinish(id:string,patch:Partial<Pick<Settings,'deviceColor'|'finish'>>){await run(async()=>{await environmentSaves.current;remember('default device finish','finish-'+id);const value={...deviceFinish(id,state.current.preferences,state.current.scenes),...patch};const records=state.current.scenes.filter(s=>s.snapshot.device===id).map(s=>({...s,snapshot:{...s.snapshot,settings:{...s.snapshot.settings,...value}}}));await putScenes(records);pref('deviceFinishes',{...state.current.preferences.deviceFinishes,[id]:value});if(id===state.current.device){const next={...state.current.settings,...value};state.current.settings=next;setSettings(next);engine.current!.configure(next)}await refresh();notice('Default finish applied to all scenes for '+DEVICES.find(d=>d.id===id)?.name)})}
+ async function setAllDeviceColours(deviceColor:string){await run(async()=>{
+  await environmentSaves.current;remember('all device colours','all-device-colours');
+  const next=colourForAllDevices(deviceColor,state.current.preferences,state.current.scenes);
+  await putScenes(next.scenes);pref('deviceFinishes',next.deviceFinishes);
+  const settings={...state.current.settings,deviceColor};state.current.settings=settings;setSettings(settings);engine.current!.configure(settings);
+  await refresh();notice('Default colour applied to every device and saved scene');
+ })}
  async function renameScene(id:string,name:string){await environmentSaves.current;const scene=state.current.scenes.find(s=>s.id===id);if(!scene||scene.name===name.trim())return;remember('rename scene');await renameSceneRecord(id,name);await refresh();notice('Scene renamed')}
  async function moveScene(scene:SavedScene,folderId:string|null){await moveScenes([scene.id],folderId)}
  async function removeScene(id:string){remember('delete scene');await deleteScene(id);await refresh();setSelected(old=>{const next=new Set(old);next.delete(id);return next});if(preferences.activeScene===id)pref('activeScene','')}
@@ -140,6 +158,18 @@ export function useDivices(){
  async function removeFolder(id:string,contents:boolean){await environmentSaves.current;remember('delete folder');const removed=await deleteFolderTree(id,contents);setDeletedFolder(removed);setSelectedFolders(old=>new Set([...old].filter(id=>!removed.folders.some(f=>f.id===id))));setDeletedScenes([]);await refresh();const ids=new Set(removed.scenes.map(s=>s.id));if(contents){setSelected(old=>new Set([...old].filter(id=>!ids.has(id))));if(ids.has(preferences.activeScene))pref('activeScene','')}notice(contents?'Folder and its scenes deleted':'Folder deleted. Scenes moved to Unfiled')}
  async function undoDelete(){remember('restore deletion');await environmentSaves.current;if(deletedFolder)await restoreFolderTree(deletedFolder);else await putScenes(deletedScenes);await refresh();setDeletedScenes([]);setDeletedFolder(null);notice('Deletion undone')}
  async function backup(){await run(async()=>{await environmentSaves.current.catch(()=>{});const library=await readLibrary();library.workspace={current:await snapshot(),preferences:state.current.preferences,deviceArtworks:defaultArtworks.current};downloadBlob(await encodeBackup(library),'divices-backup-'+new Date().toISOString().slice(0,10)+'.json');notice('Complete backup saved')})}
+ async function resetWorkspace(){
+  if(resetting.current||state.current.busy||state.current.loading)return;
+  resetting.current=true;quiet.current=true;setBusy(true);
+  try{
+   await Promise.allSettled([environmentSaves.current,workspaceSaves.current]);
+   await replaceLibrary(freshWorkspace());
+   window.location.reload();
+  }catch(e){
+   resetting.current=false;quiet.current=false;setBusy(false);
+   notice(e instanceof Error?e.message:'The workspace could not be reset. Your library was kept.',true);
+  }
+ }
  async function readBackup(f?:File){if(f)await run(async()=>setPendingBackup(await decodeBackup(f)))}
  async function restoreBackup(){if(!pendingBackup)return;await run(async()=>{await environmentSaves.current;remember('import backup');quiet.current=true;const before=await snapshot(),previousDefaults=defaultArtworks.current;try{syncDefaults(pendingBackup.workspace.deviceArtworks??{});const current=pendingBackup.workspace.current??pendingBackup.scenes[0]?.snapshot;if(current)await restoreView(current);else await showArtwork(state.current.device);await replaceLibrary(pendingBackup);setScenes(pendingBackup.scenes);setFolders(pendingBackup.folders);setPreferences(pendingBackup.workspace.preferences);setSelected(new Set());setSelectedFolders(new Set());if(current){syncSnapshot(current);baseline.current=current}setPendingBackup(null);setDeletedFolder(null);setDeletedScenes([]);setDirty(false);notice('Backup restored')}catch(e){syncDefaults(previousDefaults);await restoreView(before);throw e}finally{quiet.current=false}})}
  async function exportBatch(records:SavedScene[],name:string,extraFolders:SceneFolder[]=[]){if(!records.length)return;await run(async()=>{cancel.current=false;quiet.current=true;try{await environmentSaves.current;const latest=await readLibrary(),renderRecords=records.map(record=>{const saved=latest.scenes.find(s=>s.id===record.id)??record;return {...saved,snapshot:withDeviceArtwork(saved.snapshot,defaultArtworks.current)}});const result=await exportScenes(engine.current!,renderRecords,withDeviceArtwork(await snapshot(),defaultArtworks.current),preferences,Number(resolution),name,setProgress,()=>cancel.current,[...latest.folders,...extraFolders]);if(result){setLastDownload(result);notice(result.count+' images ready'+(cancel.current?' before cancellation':''))}}finally{quiet.current=false;setProgress('')}})}
@@ -165,13 +195,24 @@ export function useDivices(){
    finally{historyApplying.current=false;quiet.current=false}
   });
  }
- useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],[role="alertdialog"]')||document.querySelector('[role="dialog"],[role="alertdialog"]'))return;if(!(e.metaKey||e.ctrlKey)||e.altKey)return;const direction=e.key.toLowerCase()==='z'?(e.shiftKey?'redo':'undo'):e.ctrlKey&&e.key.toLowerCase()==='y'?'redo':null;if(direction){e.preventDefault();void travelHistory(direction)}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key)});
+ useEffect(()=>{
+  const key=(event:KeyboardEvent)=>{
+   const direction=historyShortcut(event);if(!direction)return;
+   const target=event.target instanceof Element?event.target:null;
+   const editingText=target?.closest('textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"],input:not([type="range"]):not([type="color"]):not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"])');
+   const modal=document.querySelector('[role="alertdialog"],[role="dialog"]:not([data-slot="popover-content"])');
+   if(editingText||modal)return;
+   event.preventDefault();void travelHistory(direction);
+  };
+  document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);
+ });
+
  function applySelection(next:{scenes:Set<string>;folders:Set<string>}){state.current.selected=next.scenes;state.current.selectedFolders=next.folders;setSelected(next.scenes);setSelectedFolders(next.folders)}
  const toggleSelection=(id:string)=>applySelection(toggleLibraryScene(id,{scenes:state.current.selected,folders:state.current.selectedFolders},state.current.scenes,state.current.folders));
  const toggleFolderSelection=(id:string)=>applySelection(toggleLibraryFolder(id,{scenes:state.current.selected,folders:state.current.selectedFolders},state.current.scenes,state.current.folders));
  const selectAll=()=>applySelection({scenes:new Set(state.current.scenes.map(s=>s.id)),folders:new Set(state.current.folders.map(f=>f.id))});
  const clearSelection=()=>applySelection({scenes:new Set(),folders:new Set()});
  const cancelBatch=()=>{cancel.current=true;setProgress('Finishing current image…')};
- return {renameScene,arrangeLibrary,autoSort,setDeviceFinish,undo:()=>travelHistory('undo'),redo:()=>travelHistory('redo'),undoLabel:history.current.peek('undo')?.label,redoLabel:history.current.peek('redo')?.label,moveScenes,deviceArtworks,openDeviceArtwork,removeDeviceArtwork,host,engine,state,pendingLeave,setPendingLeave,continueNavigation,environmentPreview,artworkPreview,deletedScenes,deletedFolder,removeFolder,removeScenes,undoDelete,device,settings,camera,liveCamera,viewName,ready,loading,busy,progress,message,error,dirty,imageName,hdrName,transparent,resolution,preferences,scenes,folders,selected,selectedFolders,selectAll,clearSelection,artworkDraft,setArtworkDraft,openArtwork,applyArtwork,toggleFolderSelection,pendingBackup,setPendingBackup,lastDownload,downloadAgain:()=>{if(lastDownload)downloadBlob(lastDownload.blob,lastDownload.name)},setSelected,setTransparent,setResolution,notice,pref,update,changeLight,chooseDevice,applyPreset,applyOrbit,run,snapshot,refresh,upload,clearArtwork,uploadHDR,exportPNG,saveCurrent,loadScene,saveFolder,moveScene,removeScene,backup,readBackup,restoreBackup,exportBatch,kit,toggleSelection,cancelBatch};
+ return {resetWorkspace,renameScene,arrangeLibrary,autoSort,setDeviceFinish,setAllDeviceColours,undo:()=>travelHistory('undo'),redo:()=>travelHistory('redo'),undoLabel:history.current.peek('undo')?.label,redoLabel:history.current.peek('redo')?.label,moveScenes,deviceArtworks,openDeviceArtwork,removeDeviceArtwork,host,engine,state,pendingLeave,setPendingLeave,continueNavigation,environmentPreview,artworkPreview,deletedScenes,deletedFolder,removeFolder,removeScenes,undoDelete,device,settings,camera,liveCamera,viewName,ready,loading,busy,progress,message,error,dirty,imageName,hdrName,transparent,resolution,preferences,scenes,folders,selected,selectedFolders,selectAll,clearSelection,artworkDraft,setArtworkDraft,openArtwork,applyArtwork,toggleFolderSelection,pendingBackup,setPendingBackup,lastDownload,downloadAgain:()=>{if(lastDownload)downloadBlob(lastDownload.blob,lastDownload.name)},setSelected,setTransparent,setResolution,notice,pref,update,changeLight,chooseDevice,applyPreset,applyOrbit,run,snapshot,refresh,upload,clearArtwork,uploadHDR,exportPNG,saveCurrent,loadScene,saveFolder,moveScene,removeScene,backup,readBackup,restoreBackup,exportBatch,kit,toggleSelection,cancelBatch};
 }
 export type DivicesController=ReturnType<typeof useDivices>;

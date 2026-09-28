@@ -1,6 +1,6 @@
 'use client';
 import {useRef,useState,type PointerEvent} from 'react';
-import {ChevronDown,ChevronRight,Save,Download,Folder,FolderPlus,Plus,Pencil,Trash2,Upload,Package,Image as ImageIcon,List,LayoutGrid,MoreHorizontal,ArrowDownUp,ArrowDownAZ,ArrowUpAZ,Clock,Smartphone} from 'lucide-react';
+import {ChevronDown,ChevronRight,Save,Download,Folder,FolderPlus,Plus,Pencil,Trash2,Package,Image as ImageIcon,List,LayoutGrid,MoreHorizontal,ArrowDownUp,ArrowDownAZ,ArrowUpAZ,Clock,Smartphone} from 'lucide-react';
 import {Checkbox} from '@/components/ui/checkbox';
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from '@/components/ui/select';
 import {manualOrder,type LibraryDrop,type SortMode} from '@/lib/library-order';
@@ -12,7 +12,7 @@ import {SceneThumbnail} from './scene-thumbnail';
 import {DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuItem,DropdownMenuSub,DropdownMenuSubTrigger,DropdownMenuSubContent} from '@/components/ui/dropdown-menu';
 
 export function folderPath(id:string|null|undefined,folders:SceneFolder[]):string {if(!id)return 'Unfiled';const folder=folders.find(f=>f.id===id);return folder?(folder.parentId?folderPath(folder.parentId,folders)+' / ':'')+folder.name:'Unfiled'}
-interface Props {onRename:(scene:SavedScene)=>void;onArrange:(drop:LibraryDrop)=>void;onAutoSort:(mode:SortMode)=>void;compact:boolean;onCompact:(value:boolean)=>void;scenes:SavedScene[];folders:SceneFolder[];selected:Set<string>;selectedFolders:Set<string>;active:string;busy:boolean;device:string;onSelect:(id:string)=>void;onToggle:(id:string)=>void;onToggleFolder:(id:string)=>void;onSelectAll:()=>void;onClear:()=>void;onSave:()=>void;onDelete:(id:string)=>void;onDeleteSelected:()=>void;onDeleteFolder:(id:string)=>void;onFolder:(folder?:SceneFolder,parentId?:string|null)=>void;onMove:(scene:SavedScene,folderId:string|null)=>void;onMoveMany:(ids:string[],folderId:string|null)=>void;onBackup:()=>void;onImport:()=>void;onArtwork:()=>void;onSceneArtwork:(id:string)=>void;onKit:(device:string,action:'load'|'export')=>void}
+interface Props {onRename:(scene:SavedScene)=>void;onArrange:(drop:LibraryDrop)=>void;onAutoSort:(mode:SortMode)=>void;compact:boolean;onCompact:(value:boolean)=>void;scenes:SavedScene[];folders:SceneFolder[];selected:Set<string>;selectedFolders:Set<string>;active:string;busy:boolean;device:string;onSelect:(id:string)=>void;onToggle:(id:string)=>void;onToggleFolder:(id:string)=>void;onSelectAll:()=>void;onClear:()=>void;onSave:()=>void;onDelete:(id:string)=>void;onDeleteSelected:()=>void;onDeleteFolder:(id:string)=>void;onFolder:(folder?:SceneFolder,parentId?:string|null)=>void;onMove:(scene:SavedScene,folderId:string|null)=>void;onMoveMany:(ids:string[],folderId:string|null)=>void;onArtwork:()=>void;onSceneArtwork:(id:string)=>void;onKit:(device:string,action:'load'|'export')=>void}
 export function SceneLibraryPanel(p:Props){
  const [collapsed,setCollapsed]=useState(new Set<string>()),[kitDevice,setKitDevice]=useState(p.device),[dropTarget,setDropTarget]=useState<Pick<LibraryDrop,'targetKind'|'targetId'|'placement'>|null>(null),[dragCount,setDragCount]=useState(0),[dragPoint,setDragPoint]=useState({x:0,y:0});
  const drag=useRef<{pointerId:number;x:number;y:number;kind:'scene'|'folder';ids:string[];active:boolean}|null>(null),suppressClick=useRef(false);
@@ -52,6 +52,5 @@ export function SceneLibraryPanel(p:Props){
    <Select value={kitDevice} onValueChange={setKitDevice} disabled={p.busy}><SelectTrigger aria-label="Essentials Kit device"><SelectValue/></SelectTrigger><SelectContent>{DEVICES.map(d=><SelectItem key={d.id} value={d.id}>{d.name}</SelectItem>)}</SelectContent></Select>
    <div className="kit-actions"><button className="secondary-button full" disabled={p.busy} onClick={()=>p.onKit(kitDevice,'load')}><Plus size={15}/>Load as scenes</button><button className="secondary-button full" disabled={p.busy} onClick={()=>p.onKit(kitDevice,'export')}><Download size={15}/>Export kit · ZIP</button></div><p className="control-hint">Starts with green screens unless a device artwork override is set. Add individual artwork after loading. Export size follows your export settings.</p>
   </section>
-  <section className="backup-panel"><h3>Backup & restore</h3><p className="control-hint">Includes all scenes, folders, artwork, HDRIs and your current settings.</p><div className="kit-actions"><button className="secondary-button full" disabled={p.busy} onClick={p.onBackup}><Download size={14}/>Save backup</button><button className="secondary-button full" disabled={p.busy} onClick={p.onImport}><Upload size={14}/>Import backup</button></div><p className="privacy">Saved automatically in this browser. Keep a backup before clearing browser data.</p></section>
  </div>;
 }
