@@ -124,3 +124,25 @@
 .divices-app .project-name .project-name-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;margin:0}
 .divices-app .project-name .unsaved{display:block;flex:0 0 6px;width:6px;height:6px;margin:0;background:#d5ec8b;border-radius:50%}
 @media(min-width:1101px){.divices-app .project-name{display:flex}}
+
+/* Small screens keep primary actions visible and utility actions in a menu. */
+.divices-app .header-actions .mobile-header-menu{display:none}
+.divices-app .brand-wordmark picture{display:block}
+.header-overflow-menu{min-width:200px;padding:6px;background:#20272e;color:#e2e9ef;border:1px solid #53606a;border-radius:8px;box-shadow:0 10px 32px #0005}
+.header-overflow-menu [role=menuitem]{min-height:44px;padding:10px;gap:10px;font-size:13px}
+.header-overflow-menu [role=menuitem][data-highlighted]{background:#394333;color:#edf5dc}
+@media(max-width:850px){
+ .divices-app header{gap:12px;padding-inline:10px}
+ .divices-app header .brand{flex:0 0 36px;gap:0}
+ .divices-app .brand-wordmark img{width:36px;height:36px}
+ .divices-app .header-actions{min-width:0;flex-shrink:0;gap:4px;margin-left:auto}
+ .divices-app .header-actions .backup-controls,.divices-app .header-actions .reset-header-button{display:none}
+ .divices-app .header-actions>button{width:40px;height:40px;min-height:40px;padding:0}
+ .divices-app .header-actions .mobile-header-menu{display:grid;place-items:center}
+ .divices-app .header-actions .history-controls .secondary-button{width:36px;height:40px;min-height:40px}
+ .divices-app .header-actions .quick-guide-trigger{width:28px;height:28px;min-height:28px;margin-right:4px}
+}
+@media(max-width:319px){
+ .divices-app header{height:auto;min-height:67px;flex-wrap:wrap;padding-block:10px}
+ .divices-app .header-actions{flex-wrap:wrap;justify-content:flex-end}
+}
